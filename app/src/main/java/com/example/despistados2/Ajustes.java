@@ -26,20 +26,18 @@ public class Ajustes extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
-    /*    if(local==null){
-            local = new Locale("es");
-            Locale.setDefault(local);
-        }else{
-            Locale.setDefault(local);
-        }
-*/
-        config = getBaseContext().getResources().getConfiguration();
-        config.setLocale(local);
-        config.setLayoutDirection(local);
+        //Antes de que se cargue el layout de la actividad, obtenemos la Localizacion de
+        // la aplicación para saber en qué idioma escribir los botones y textos
+        Locale nuevaloc = new Locale(Idioma.locale);
+        Locale.setDefault(nuevaloc);
 
-        Context context = getBaseContext().createConfigurationContext(config);
-        getBaseContext().getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+        Configuration configuration =
+                getBaseContext().getResources().getConfiguration();
+        configuration.setLocale(nuevaloc);
+        configuration.setLayoutDirection(nuevaloc);
 
+        Context context = getBaseContext().createConfigurationContext(configuration);
+        getBaseContext().getResources().updateConfiguration(configuration,context.getResources().getDisplayMetrics());
 
 
         super.onCreate(savedInstanceState);
@@ -64,10 +62,38 @@ public class Ajustes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent i = new Intent(Intent.ACTION_MAIN);
-                i.setClassName("com.android.settings", "com.android.settings.LanguageSettings");
+                AlertDialog.Builder b = new AlertDialog.Builder(Ajustes.this);
+                b.setTitle("Cambiar idioma");
 
-                startActivity(i);
+                String[] idiomas = {"Español", "English"};
+                b.setItems(idiomas, new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.dismiss();
+                        switch(which){
+                            case 0:
+                                //Cuando el usuario pulsa "Español", la variable estática de la clase Idioma.java se cambia a "es"
+                                Idioma.locale = "es";
+                                finish();
+                                startActivity(getIntent());
+                                break;
+                            case 1:
+                                //Cuando el usuario pulsa "English", la variable estática de la clase Idioma.java se cambia a "en"
+                                Idioma.locale = "en";
+                                finish();
+                                startActivity(getIntent());
+                                break;
+
+                        }
+
+
+                    }
+
+                });
+
+                b.show();
 
             }
 
