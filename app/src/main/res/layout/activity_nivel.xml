@@ -14,7 +14,7 @@
         <LinearLayout
             android:id="@+id/layoutNorte"
             android:layout_width="match_parent"
-            android:layout_height="98dp"
+            android:layout_height="70dp"
             android:background="#E3E6F4">
 
             <TextView
@@ -48,7 +48,7 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="363dp"
+            android:layout_width="match_parent"
             android:layout_height="400dp"
             android:background="#C6C9DD"
             android:orientation="vertical">

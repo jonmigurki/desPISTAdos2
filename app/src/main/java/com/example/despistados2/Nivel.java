@@ -63,8 +63,8 @@ public class Nivel extends AppCompatActivity {
         //Cargamos los niveles dada la categoría elegida
         String [] niveles = cargarNiveles(categoria);
 
-        String idioma = "";
-        if(String.valueOf(getResources().getConfiguration().locale).contains("es")){
+        String idioma = String.valueOf(getResources().getConfiguration().getLocales().get(0));
+        if(idioma.contains("es")){
             idioma = "español";
         }else{
             idioma = "inglés";
@@ -144,9 +144,13 @@ public class Nivel extends AppCompatActivity {
 
         InputStream is = this.getResources().openRawResource(R.raw.data_es);
 
-        if(String.valueOf(getResources().getConfiguration().locale).equals("en")){
+        String idioma = String.valueOf(getResources().getConfiguration().getLocales().get(0));
+
+
+        if (idioma.contains("en")) {
             is = this.getResources().openRawResource(R.raw.data_en);
         }
+
 
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
 

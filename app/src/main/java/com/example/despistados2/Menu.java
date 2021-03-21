@@ -118,7 +118,10 @@ public class Menu extends AppCompatActivity {
 
         InputStream is = this.getResources().openRawResource(R.raw.data_es);
 
-        if (String.valueOf(getResources().getConfiguration().locale).equals("en")) {
+        String idioma = String.valueOf(getResources().getConfiguration().getLocales().get(0));
+
+
+        if (idioma.contains("en")) {
             is = this.getResources().openRawResource(R.raw.data_en);
         }
 

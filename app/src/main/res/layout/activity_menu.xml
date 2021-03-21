@@ -14,7 +14,7 @@
         <LinearLayout
             android:id="@+id/layoutNorte"
             android:layout_width="match_parent"
-            android:layout_height="98dp"
+            android:layout_height="70dp"
             android:background="#E3E6F4">
 
             <TextView
@@ -48,8 +48,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="363dp"
-            android:layout_height="540dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="#C6C9DD"
             android:orientation="vertical">
 
@@ -73,6 +73,7 @@
 
             <Button
                 android:id="@+id/btnCompartir"
+                style="@style/boton"
                 android:layout_width="172dp"
                 android:layout_height="51dp"
                 android:layout_gravity="center_horizontal"
@@ -81,8 +82,7 @@
                 android:drawableLeft="@drawable/compartir"
                 android:scaleX="1"
                 android:scaleY="1"
-                android:text="@string/btnCompartir"
-                style="@style/boton" />
+                android:text="@string/btnCompartir" />
         </LinearLayout>
 
     </LinearLayout>

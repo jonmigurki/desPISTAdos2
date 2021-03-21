@@ -1,6 +1,7 @@
 package com.example.despistados2;
 
 import android.app.AlertDialog;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -18,11 +19,29 @@ public class Ajustes extends AppCompatActivity {
 
     Button cambiarIdioma, atras;
 
-    Locale locale;
-    Configuration config = new Configuration();
+    Locale local;
+    Configuration config;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
+    /*    if(local==null){
+            local = new Locale("es");
+            Locale.setDefault(local);
+        }else{
+            Locale.setDefault(local);
+        }
+*/
+        config = getBaseContext().getResources().getConfiguration();
+        config.setLocale(local);
+        config.setLayoutDirection(local);
+
+        Context context = getBaseContext().createConfigurationContext(config);
+        getBaseContext().getResources().updateConfiguration(config, context.getResources().getDisplayMetrics());
+
+
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ajustes);
 
@@ -45,42 +64,13 @@ public class Ajustes extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                AlertDialog.Builder b = new AlertDialog.Builder(Ajustes.this);
-                b.setTitle("Cambiar idioma");
+                Intent i = new Intent(Intent.ACTION_MAIN);
+                i.setClassName("com.android.settings", "com.android.settings.LanguageSettings");
 
-                String[] idiomas = {"Español", "English"};
-                b.setItems(idiomas, new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-
-                        dialog.dismiss();
-                        switch(which){
-                            case 0:
-                                locale = new Locale("es");
-                                config.locale =locale;
-                                break;
-                            case 1:
-                                locale = new Locale("en");
-                                config.locale =locale;
-                                break;
-
-                        }
-                        
-                        getResources().updateConfiguration(config, null);
-                        Intent refresh = new Intent(Ajustes.this, Ajustes.class);
-                        startActivity(refresh);
-                        Ajustes.this.finish();
-                    }
-
-                });
-
-                b.show();
-
-
-
+                startActivity(i);
 
             }
+
         });
 
 
@@ -94,6 +84,8 @@ public class Ajustes extends AppCompatActivity {
                 finish();
             }
         });
+
+
 
 
     }

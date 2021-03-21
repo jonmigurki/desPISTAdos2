@@ -14,7 +14,7 @@
         <LinearLayout
             android:id="@+id/layoutNorte"
             android:layout_width="match_parent"
-            android:layout_height="98dp"
+            android:layout_height="70dp"
             android:background="#E3E6F4">
 
             <TextView
@@ -48,8 +48,8 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="363dp"
-            android:layout_height="540dp"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:background="#C6C9DD"
             android:orientation="vertical">
 
@@ -99,8 +99,8 @@
                     android:textSize="14sp" />
 
                 <Space
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:layout_weight="0.5" />
 
                 <Button
@@ -140,6 +140,7 @@
 
                 <Button
                     android:id="@+id/btnPista"
+                    style="@style/boton"
                     android:layout_width="1dp"
                     android:layout_height="70dp"
                     android:layout_marginTop="20dp"
@@ -147,8 +148,7 @@
                     android:background="#3F51B5"
                     android:drawableLeft="@drawable/pista"
                     android:text="@string/btnPista"
-                    app:backgroundTint="#3F51B5"
-                    style="@style/boton"/>
+                    app:backgroundTint="#3F51B5" />
 
                 <Button
                     android:id="@+id/btnResolver"
